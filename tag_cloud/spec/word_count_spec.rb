@@ -59,4 +59,14 @@ describe "word_count" do
 										  "John" => 1,
 										  "Rambo" => 2})
 	end
+
+	it "deletes trash characters like commas" do
+		twice = Catalog.new
+		twice.add(Movie.new("Batman", :heroes, 1989, "Once, upon Rambo''?? (Rambo)?"))
+		expect(word_count(twice)).to eq({ "Once" => 1,
+										  "upon" => 1,
+										  "Rambo" => 2 })
+	end
+
+
 end

@@ -20,9 +20,12 @@ end
 def descriptions_to_array(catalog)
 	words = []
 	catalog.movies.each do |movie|
-		movie.description.split(" ").each do |word|
+		movie.description.split(%r{\W+}).each do |word|
 			words << word
 		end
 	end
 	words
 end
+
+
+puts word_count(read_movies('movies.csv'))
